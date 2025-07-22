@@ -62,7 +62,9 @@ select distinct genre from artists;
 Which artists are classified as R&B artists? Print the artist name and debut year.*/
 .print '### CA5 - List of R&B artists with debut year:'
 
-select name, debut_year from artists where genre = 'R&B' ;
+select name, debut_year 
+  from artists 
+  where genre = 'R&B' ;
 
 .print ''
 
@@ -70,7 +72,10 @@ select name, debut_year from artists where genre = 'R&B' ;
 Which artists are classified as Rock artists and debuted before the year 1980? Print the artist name and debut year.*/
 .print '### CA6 - List of Rock artists who debuted before 1980:'
 
-select 'Replace this query with your answer.';
+SELECT name, debut_year
+  FROM artists
+  WHERE genre = 'Rock'
+  AND debut_year < '1980';
 
 .print ''
 
