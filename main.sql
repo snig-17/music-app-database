@@ -259,7 +259,17 @@ What is Bertha's favorite album?
 Count how many times Bertha has listened to a song in each album. Order from most plays to least.*/
 .print '### CA22 - Berthas plays by album:'
 
-select 'Replace this query with your answer.';
+  select alb.title, count(*) as album_play_count 
+  from plays as p
+  join songs as s on p.song_id = s.song_id
+  join albums as alb on s.album_id = alb.album_id
+  where p.listener_id = (
+    select listener_id 
+      from listeners 
+      where name = 'Bertha'
+  )
+  group by alb.title
+  order by album_play_count desc;
 
 .print ''
 
@@ -282,7 +292,10 @@ What songs did Esperanza listen to during the summer of 2024? Print the song tit
 What is the first date that Disha listened to a song?*/
 .print '### CA24 - The first date Disha listened to a song:'
 
-select 'Replace this query with your answer.';
+  select min(played_date)
+   from plays where listener_id = (
+   select listener_id from listeners where name = 'Disha'
+   );
 
 .print ''
 
@@ -290,6 +303,9 @@ select 'Replace this query with your answer.';
 What is the last date that Alex listened to a song?*/
 .print '### CA25 - The last date Alex listened to a song:'
 
-select 'Replace this query with your answer.';
+  select max(played_date)
+   from plays where listener_id = (
+   select listener_id from listeners where name = 'Alex'
+   );
 
 .print ''
