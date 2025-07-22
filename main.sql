@@ -24,18 +24,13 @@ Don't change any code in this section!
 
 /* Code-along 0:
   Open the file `import_data.sql` and add a line to import the plays.csv data. Delete the following 6 lines when this is done. */
-.print '!!!!!!! ERROR !!!!!!!!'
-.print '!!!!!!! ERROR !!!!!!!!'
-.print '!!! plays.csv might not have been imported yet !!!'
-.print '!!!!!!! ERROR !!!!!!!!'
-.print '!!!!!!! ERROR !!!!!!!!'
-.print ''
+
   
 /* Code-along 1: -------------------------
 How many total albums are in the database? */
 .print '### CA1 - Total number of albums in the database:'
 
-select 'Replace this query with your answer.';
+select count(*) from albums;
 
 .print ''
 
