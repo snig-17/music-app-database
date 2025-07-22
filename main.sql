@@ -114,7 +114,9 @@ select name, genre
 Which artists are NOT classified as 'Pop' or 'Funk/Soul'? Print the artist name and genre.*/
 .print '### CA10 - List of artists not classified as "Pop" or "Funk/Soul":'
 
-select 'Replace this query with your answer.';
+  select name, genre
+  from artists
+  where not genre in ('Pop', 'Funk/Soul') ;
 
 .print ''
 
@@ -122,10 +124,12 @@ select 'Replace this query with your answer.';
 Which song titles contain the word, 'you'?*/
 .print '### CA11 - List of song titles that contain the word "you":'
 
-select 'Replace this query with your answer.';
+  select title
+    from songs
+    where title like '% you %';
 
 .print ''
-
+--'% you %', anything can happen before/after 'you' word
 /* Code-along 12: -------------------------
 Order all albums by release date, from oldest to newest (ascending). Print the album name and release date. */
 .print '### CA12 - Albums ordered by release date, from oldest to newest (ascending):'
