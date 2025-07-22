@@ -104,7 +104,9 @@ Which artists are classified as either Pop or Funk/Soul? Print the artist name a
 Which artists are NOT classified as 'Pop'? Print the artist name and genre.*/
 .print '### CA9 - List of artists not classified as "Pop":'
 
-select 'Replace this query with your answer.';
+select name, genre
+  from artists
+  where not genre = 'Pop';
   
 .print ''
 
