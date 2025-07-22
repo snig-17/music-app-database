@@ -62,7 +62,7 @@ select distinct genre from artists;
 Which artists are classified as R&B artists? Print the artist name and debut year.*/
 .print '### CA5 - List of R&B artists with debut year:'
 
-select 'Replace this query with your answer.';
+select name, debut_year from artists where genre = 'R&B' ;
 
 .print ''
 
