@@ -83,7 +83,10 @@ SELECT name, debut_year
 Which artists are classified as Pop or debuted before 1980? Print the artist name, genre, and debut_year.*/
 .print '### CA7 - List of artists classified as Pop or debuted before 1980:'
 
-select 'Replace this query with your answer.';
+  SELECT name, genre, debut_year
+  FROM artists
+  WHERE genre = 'Pop'
+  OR debut_year < '1980';
 
 .print ''
 
@@ -91,7 +94,9 @@ select 'Replace this query with your answer.';
 Which artists are classified as either Pop or Funk/Soul? Print the artist name and genre.*/
 .print '### CA8 - List of artists classified as either Pop or Funk/Soul:'
   
-select 'Replace this query with your answer.';
+ SELECT name, genre
+  FROM artists
+  WHERE genre in ('Pop', 'Funk/Soul'); 
 
 .print ''
   
