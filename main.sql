@@ -134,7 +134,9 @@ Which song titles contain the word, 'you'?*/
 Order all albums by release date, from oldest to newest (ascending). Print the album name and release date. */
 .print '### CA12 - Albums ordered by release date, from oldest to newest (ascending):'
 
-select 'Replace this query with your answer.';
+  select title, release_date
+  from albums
+  order by release_date asc;
 
 .print ''
 
@@ -142,7 +144,10 @@ select 'Replace this query with your answer.';
 Order all albums by release date, from newest to oldest (descending). Print the album name and release date. */
 .print '### CA13 - Albums ordered by release date, from newest to oldest (descending):'
 
-select 'Replace this query with your answer.';
+  select title, release_date
+  from albums
+  order by release_date desc;
+
 
 .print ''
 
