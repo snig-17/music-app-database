@@ -165,7 +165,12 @@ select song_id, count(*)
 Building off of CA14, modify your query to print the song title instead of the song ID.*/
 .print '### CA15 - Number of plays per song, with titles:'
 
-select 'Replace this query with your answer.';
+select s.title, count(*)
+  from plays as p
+  join songs as s 
+  on p.song_id = s.song_id
+  group by p.song_id;
+  
 
 .print ''
 
@@ -173,7 +178,12 @@ select 'Replace this query with your answer.';
 Building off of CA15, modify your query to print the songs in order from most plays to least plays.*/
 .print '### CA16 - Number of plays per song, with title, in descending order:'
 
-select 'Replace this query with your answer.';
+  select s.title, count(*) as play_count
+  from plays as p
+  join songs as s 
+  on p.song_id = s.song_id
+  group by p.song_id
+  order by play_count asc;
 
 .print ''
 
@@ -181,7 +191,12 @@ select 'Replace this query with your answer.';
 Building off of CA16, modify your query to also print the album for each song.*/
 .print '### CA17 - Number of plays per song, including song title and album title, in descending order:'
 
-select 'Replace this query with your answer.';
+  select s.title as song_title, alb.title as album_title, count(*) as play_count
+   from plays as p
+   join songs as s on p.song_id = s.song_id
+   join albums as alb on s.album_id = alb.album_id
+   group by p.song_id
+   order by play_count desc;
 
 .print ''
 
@@ -189,7 +204,13 @@ select 'Replace this query with your answer.';
 Building off of CA17, modify your query to also print the artist for each song.*/
 .print '### CA18 - Number of plays per song, including song title and artist name, in descending order:'
 
-select 'Replace this query with your answer.';
+  select s.title as song_title, art.name as artist_name, alb.title as album_title, count(*) as play_count
+   from plays as p
+   join songs as s on p.song_id = s.song_id
+   join albums as alb on s.album_id = alb.album_id
+   join artists as art on alb.artist_id = art.artist_id
+   group by p.song_id
+  order by play_count desc;
 
 .print ''
 
@@ -197,7 +218,8 @@ select 'Replace this query with your answer.';
 Print all of Bertha's song plays. You can hardcode her ID (2). "Hardcoding" means to use the ID directly in your query. No need to print the names of the songs — so no need to join on another table. */
 .print '### CA19 - Berthas plays (hardcoded ID):'
 
-select 'Replace this query with your answer.';
+select * from plays
+  where listener_id = 2;
 
 .print ''
 
@@ -205,8 +227,13 @@ select 'Replace this query with your answer.';
 Print all of Bertha's song plays. Don't hardcode her ID (Don’t use her ID directly). No need to print the names of the songs — so no need to join on another table. */
 .print '### CA20 - Berthas plays:'
 
-select 'Replace this query with your answer.';
+  select * from plays
+    where listener_id = (
+      select listener_id from listeners
+      where name = 'Bertha'
+    );
 
+  
 .print ''
 
 /* Code-along 21: -------------------------
@@ -214,7 +241,16 @@ What is Bertha's favorite genre?
 Count how many times Bertha has listened to a song in each genre. Order from most plays to least.*/
 .print '### CA21 - Berthas plays by genre:'
 
-select 'Replace this query with your answer.';
+  select genre, count(*) as genre_count
+  from plays as p
+  join songs as s on p.song_id = s.song_id
+  join albums as alb on s.album_id = alb.album_id
+  join artists as art on alb.artist_id = art.artist_id
+  where p.listener_id = (
+         select listener_id from listeners where name = 'Bertha'
+   )
+   group by art.genre
+   order by genre_count desc;
 
 .print ''
 
@@ -231,7 +267,14 @@ select 'Replace this query with your answer.';
 What songs did Esperanza listen to during the summer of 2024? Print the song title and played_date. Order them by played_date from earliest to latest.*/
 .print '### CA23 - Esperanzas summer hits, ordered by date, ascending:'
 
-select 'Replace this query with your answer.';
+  select s.title, played_date
+    from plays as p
+    join songs as s on p.song_id = s.song_id
+   where listener_id = (
+   select listener_id from listeners where name = 'Esperanza'
+   )
+   and p.played_date between '2024-06-20' and '2024-09-22'
+   order by p.played_date asc;
 
 .print ''
 
