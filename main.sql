@@ -38,7 +38,7 @@ select count(*) from albums;
 How many total artists are there in the database? */
 .print '### CA2 - Total number of artists in the database:'
 
-select 'Replace this query with your answer.';
+  select count(*) from artists;
 
 .print ''
 
