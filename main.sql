@@ -46,7 +46,7 @@ How many total artists are there in the database? */
 Which albums came out after 2015? Print only the title of the albums.*/
 .print '### CA3 - List of album titles released after 2015:'
 
-select 'Replace this query with your answer.';
+select title from albums where release_date > '2015-12-31';
 
 .print ''
 
