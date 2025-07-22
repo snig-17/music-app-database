@@ -54,7 +54,7 @@ select title from albums where release_date > '2015-12-31';
 What are all the genres present in the database? Don't print duplicates.*/
 .print '### CA4 - List of genres:'
   
-select 'Replace this query with your answer.';
+select distinct genre from artists;
 
 .print ''
 
