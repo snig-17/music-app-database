@@ -155,7 +155,9 @@ Order all albums by release date, from newest to oldest (descending). Print the 
 Count the number of plays for each song. Print the song ID and the total times it has been played.*/
 .print '### CA14 - Number of plays per song:'
 
-select 'Replace this query with your answer.';
+select song_id, count(*)
+  from plays
+  group by song_id;
 
 .print ''
 
